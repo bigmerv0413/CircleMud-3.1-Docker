@@ -9,6 +9,7 @@ docker build -t circlemud:3.1 .
 ## Running
 ```bash
 docker run -d --rm -v circlemud-data:/circle-3.1/lib --name circlemud -p 4000:4000 circlemud:3.1
+docker run -d --rm -v c:\circlemud-1-master\circle-3.1\lib:/circle-3.1/lib --name circlemud -p 4000:4000 circlemud:3.1
 ```
 
 ## Accessing Circle MUD
