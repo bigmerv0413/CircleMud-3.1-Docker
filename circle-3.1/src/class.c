@@ -52,6 +52,7 @@ const char *class_abbrevs[] = {
   "Cl",
   "Th",
   "Wa",
+  "Ba",
   "\n"
 };
 
@@ -61,6 +62,7 @@ const char *pc_class_types[] = {
   "Cleric",
   "Thief",
   "Warrior",
+  "Barbarian",
   "\n"
 };
 
@@ -72,7 +74,8 @@ const char *class_menu =
 "  [C]leric\r\n"
 "  [T]hief\r\n"
 "  [W]arrior\r\n"
-"  [M]agic-user\r\n";
+"  [M]agic-user\r\n"
+"  Barbaria[n]\r\n";
 
 
 
@@ -90,6 +93,7 @@ int parse_class(char arg)
   case 'c': return CLASS_CLERIC;
   case 'w': return CLASS_WARRIOR;
   case 't': return CLASS_THIEF;
+  case 'n': return CLASS_BARBARIAN;
   default:  return CLASS_UNDEFINED;
   }
 }
@@ -144,11 +148,11 @@ bitvector_t find_class_bitvector(const char *arg)
 /* #define PRAC_TYPE		3  should it say 'spell' or 'skill'?	*/
 
 int prac_params[4][NUM_CLASSES] = {
-  /* MAG	CLE	THE	WAR */
-  { 95,		95,	85,	80	},	/* learned level */
-  { 100,	100,	12,	12	},	/* max per practice */
-  { 25,		25,	0,	0	},	/* min per practice */
-  { SPELL,	SPELL,	SKILL,	SKILL	},	/* prac name */
+  /* MAG	CLE	THE	WAR BARB*/
+  { 95,		95,	85,	80,	75},	/* learned level */
+  { 100,	100,	12,	12, 12	},	/* max per practice */
+  { 25,		25,	0,	0	,0},	/* min per practice */
+  { SPELL,	SPELL,	SKILL,	SKILL, SKILL	},	/* prac name */
 };
 
 
@@ -170,6 +174,7 @@ struct guild_info_type guild_info[] = {
   { CLASS_CLERIC,	3004,	SCMD_NORTH	},
   { CLASS_THIEF,	3027,	SCMD_EAST	},
   { CLASS_WARRIOR,	3021,	SCMD_EAST	},
+  { CLASS_BARBARIAN,3021,	SCMD_EAST	},
 
 /* Brass Dragon */
   { -999 /* all */ ,	5065,	SCMD_WEST	},
@@ -1209,6 +1214,299 @@ byte saving_throws(int class_num, int type, int level)
       log("SYSERR: Invalid saving throw type.");
       break;
     }
+	
+	case CLASS_BARBARIAN:
+    switch (type) {
+    case SAVING_PARA:	/* Paralyzation */
+      switch (level) {
+      case  0: return 90;
+      case  1: return 70;
+      case  2: return 68;
+      case  3: return 67;
+      case  4: return 65;
+      case  5: return 62;
+      case  6: return 58;
+      case  7: return 55;
+      case  8: return 53;
+      case  9: return 52;
+      case 10: return 50;
+      case 11: return 47;
+      case 12: return 43;
+      case 13: return 40;
+      case 14: return 38;
+      case 15: return 37;
+      case 16: return 35;
+      case 17: return 32;
+      case 18: return 28;
+      case 19: return 25;
+      case 20: return 24;
+      case 21: return 23;
+      case 22: return 22;
+      case 23: return 20;
+      case 24: return 19;
+      case 25: return 17;
+      case 26: return 16;
+      case 27: return 15;
+      case 28: return 14;
+      case 29: return 13;
+      case 30: return 12;
+      case 31: return 11;
+      case 32: return 10;
+      case 33: return  9;
+      case 34: return  8;
+      case 35: return  7;
+      case 36: return  6;
+      case 37: return  5;
+      case 38: return  4;
+      case 39: return  3;
+      case 40: return  2;
+      case 41: return  1;	/* Some mobiles. */
+      case 42: return  0;
+      case 43: return  0;
+      case 44: return  0;
+      case 45: return  0;
+      case 46: return  0;
+      case 47: return  0;
+      case 48: return  0;
+      case 49: return  0;
+      case 50: return  0;
+      default:
+	log("SYSERR: Missing level for warrior paralyzation saving throw.");
+	break;
+      }
+    case SAVING_ROD:	/* Rods */
+      switch (level) {
+      case  0: return 90;
+      case  1: return 80;
+      case  2: return 78;
+      case  3: return 77;
+      case  4: return 75;
+      case  5: return 72;
+      case  6: return 68;
+      case  7: return 65;
+      case  8: return 63;
+      case  9: return 62;
+      case 10: return 60;
+      case 11: return 57;
+      case 12: return 53;
+      case 13: return 50;
+      case 14: return 48;
+      case 15: return 47;
+      case 16: return 45;
+      case 17: return 42;
+      case 18: return 38;
+      case 19: return 35;
+      case 20: return 34;
+      case 21: return 33;
+      case 22: return 32;
+      case 23: return 30;
+      case 24: return 29;
+      case 25: return 27;
+      case 26: return 26;
+      case 27: return 25;
+      case 28: return 24;
+      case 29: return 23;
+      case 30: return 22;
+      case 31: return 20;
+      case 32: return 18;
+      case 33: return 16;
+      case 34: return 14;
+      case 35: return 12;
+      case 36: return 10;
+      case 37: return  8;
+      case 38: return  6;
+      case 39: return  5;
+      case 40: return  4;
+      case 41: return  3;
+      case 42: return  2;
+      case 43: return  1;
+      case 44: return  0;
+      case 45: return  0;
+      case 46: return  0;
+      case 47: return  0;
+      case 48: return  0;
+      case 49: return  0;
+      case 50: return  0;
+      default:
+	log("SYSERR: Missing level for warrior rod saving throw.");
+	break;
+      }
+    case SAVING_PETRI:	/* Petrification */
+      switch (level) {
+      case  0: return 90;
+      case  1: return 75;
+      case  2: return 73;
+      case  3: return 72;
+      case  4: return 70;
+      case  5: return 67;
+      case  6: return 63;
+      case  7: return 60;
+      case  8: return 58;
+      case  9: return 57;
+      case 10: return 55;
+      case 11: return 52;
+      case 12: return 48;
+      case 13: return 45;
+      case 14: return 43;
+      case 15: return 42;
+      case 16: return 40;
+      case 17: return 37;
+      case 18: return 33;
+      case 19: return 30;
+      case 20: return 29;
+      case 21: return 28;
+      case 22: return 26;
+      case 23: return 25;
+      case 24: return 24;
+      case 25: return 23;
+      case 26: return 21;
+      case 27: return 20;
+      case 28: return 19;
+      case 29: return 18;
+      case 30: return 17;
+      case 31: return 16;
+      case 32: return 15;
+      case 33: return 14;
+      case 34: return 13;
+      case 35: return 12;
+      case 36: return 11;
+      case 37: return 10;
+      case 38: return  9;
+      case 39: return  8;
+      case 40: return  7;
+      case 41: return  6;
+      case 42: return  5;
+      case 43: return  4;
+      case 44: return  3;
+      case 45: return  2;
+      case 46: return  1;
+      case 47: return  0;
+      case 48: return  0;
+      case 49: return  0;
+      case 50: return  0;
+      default:
+	log("SYSERR: Missing level for warrior petrification saving throw.");
+	break;
+      }
+    case SAVING_BREATH:	/* Breath weapons */
+      switch (level) {
+      case  0: return 90;
+      case  1: return 85;
+      case  2: return 83;
+      case  3: return 82;
+      case  4: return 80;
+      case  5: return 75;
+      case  6: return 70;
+      case  7: return 65;
+      case  8: return 63;
+      case  9: return 62;
+      case 10: return 60;
+      case 11: return 55;
+      case 12: return 50;
+      case 13: return 45;
+      case 14: return 43;
+      case 15: return 42;
+      case 16: return 40;
+      case 17: return 37;
+      case 18: return 33;
+      case 19: return 30;
+      case 20: return 29;
+      case 21: return 28;
+      case 22: return 26;
+      case 23: return 25;
+      case 24: return 24;
+      case 25: return 23;
+      case 26: return 21;
+      case 27: return 20;
+      case 28: return 19;
+      case 29: return 18;
+      case 30: return 17;
+      case 31: return 16;
+      case 32: return 15;
+      case 33: return 14;
+      case 34: return 13;
+      case 35: return 12;
+      case 36: return 11;
+      case 37: return 10;
+      case 38: return  9;
+      case 39: return  8;
+      case 40: return  7;
+      case 41: return  6;
+      case 42: return  5;
+      case 43: return  4;
+      case 44: return  3;
+      case 45: return  2;
+      case 46: return  1;
+      case 47: return  0;
+      case 48: return  0;
+      case 49: return  0;
+      case 50: return  0;
+      default:
+	log("SYSERR: Missing level for warrior breath saving throw.");
+	break;
+      }
+    case SAVING_SPELL:	/* Generic spells */
+      switch (level) {
+      case  0: return 90;
+      case  1: return 85;
+      case  2: return 83;
+      case  3: return 82;
+      case  4: return 80;
+      case  5: return 77;
+      case  6: return 73;
+      case  7: return 70;
+      case  8: return 68;
+      case  9: return 67;
+      case 10: return 65;
+      case 11: return 62;
+      case 12: return 58;
+      case 13: return 55;
+      case 14: return 53;
+      case 15: return 52;
+      case 16: return 50;
+      case 17: return 47;
+      case 18: return 43;
+      case 19: return 40;
+      case 20: return 39;
+      case 21: return 38;
+      case 22: return 36;
+      case 23: return 35;
+      case 24: return 34;
+      case 25: return 33;
+      case 26: return 31;
+      case 27: return 30;
+      case 28: return 29;
+      case 29: return 28;
+      case 30: return 27;
+      case 31: return 25;
+      case 32: return 23;
+      case 33: return 21;
+      case 34: return 19;
+      case 35: return 17;
+      case 36: return 15;
+      case 37: return 13;
+      case 38: return 11;
+      case 39: return  9;
+      case 40: return  7;
+      case 41: return  6;
+      case 42: return  5;
+      case 43: return  4;
+      case 44: return  3;
+      case 45: return  2;
+      case 46: return  1;
+      case 47: return  0;
+      case 48: return  0;
+      case 49: return  0;
+      case 50: return  0;
+      default:
+	log("SYSERR: Missing level for warrior spell saving throw.");
+	break;
+      }
+    default:
+      log("SYSERR: Invalid saving throw type.");
+      break;
+    }
+	
   default:
     log("SYSERR: Invalid class saving throw.");
     break;
@@ -1382,6 +1680,46 @@ int thaco(int class_num, int level)
     default:
       log("SYSERR: Missing level for warrior thac0.");
     }
+	case CLASS_BARBARIAN:
+    switch (level) {
+    case  0: return 100;
+    case  1: return  20;
+    case  2: return  19;
+    case  3: return  18;
+    case  4: return  17;
+    case  5: return  16;
+    case  6: return  15;
+    case  7: return  14;
+    case  8: return  14;
+    case  9: return  13;
+    case 10: return  12;
+    case 11: return  11;
+    case 12: return  10;
+    case 13: return   9;
+    case 14: return   8;
+    case 15: return   7;
+    case 16: return   6;
+    case 17: return   5;
+    case 18: return   4;
+    case 19: return   3;
+    case 20: return   2;
+    case 21: return   1;
+    case 22: return   1;
+    case 23: return   1;
+    case 24: return   1;
+    case 25: return   1;
+    case 26: return   1;
+    case 27: return   1;
+    case 28: return   1;
+    case 29: return   1;
+    case 30: return   1;
+    case 31: return   1;
+    case 32: return   1;
+    case 33: return   1;
+    case 34: return   1;
+    default:
+      log("SYSERR: Missing level for barbarian thac0.");
+    }
   default:
     log("SYSERR: Unknown class in thac0 chart.");
   }
@@ -1458,6 +1796,16 @@ void roll_real_abils(struct char_data *ch)
     if (ch->real_abils.str == 18)
       ch->real_abils.str_add = rand_number(0, 100);
     break;
+  case CLASS_BARBARIAN:
+    ch->real_abils.str = table[0];
+    ch->real_abils.dex = table[1];
+    ch->real_abils.con = table[2];
+    ch->real_abils.wis = table[3];
+    ch->real_abils.intel = table[4];
+    ch->real_abils.cha = table[5];
+    if (ch->real_abils.str == 18)
+      ch->real_abils.str_add = rand_number(0, 100);
+    break;
   }
   ch->aff_abils = ch->real_abils;
 }
@@ -1510,6 +1858,8 @@ void do_start(struct char_data *ch)
     break;
 
   case CLASS_WARRIOR:
+    break;
+  case CLASS_BARBARIAN:
     break;
   }
 
@@ -1564,6 +1914,11 @@ void advance_level(struct char_data *ch)
 
   case CLASS_WARRIOR:
     add_hp += rand_number(10, 15);
+    add_mana = 0;
+    add_move = rand_number(1, 3);
+    break;
+  case CLASS_BARBARIAN:
+    add_hp += rand_number(15, 20);
     add_mana = 0;
     add_move = rand_number(1, 3);
     break;
@@ -1632,6 +1987,9 @@ int invalid_class(struct char_data *ch, struct obj_data *obj)
     return TRUE;
 
   if (OBJ_FLAGGED(obj, ITEM_ANTI_THIEF) && IS_THIEF(ch))
+    return TRUE;
+
+	if (OBJ_FLAGGED(obj, ITEM_ANTI_BARBARIAN) && IS_BARBARIAN(ch))
     return TRUE;
 
   return FALSE;
@@ -1714,6 +2072,12 @@ void init_spell_levels(void)
   spell_level(SKILL_RESCUE, CLASS_WARRIOR, 3);
   spell_level(SKILL_TRACK, CLASS_WARRIOR, 9);
   spell_level(SKILL_BASH, CLASS_WARRIOR, 12);
+  
+  /* BARBARIANS */
+  spell_level(SKILL_KICK, CLASS_BARBARIAN, 1);
+  spell_level(SKILL_RESCUE, CLASS_BARBARIAN, 3);
+  spell_level(SKILL_TRACK, CLASS_BARBARIAN, 9);
+  spell_level(SKILL_BASH, CLASS_BARBARIAN, 12);
 }
 
 
@@ -1858,6 +2222,44 @@ int level_exp(int chclass, int level)
     break;
 
     case CLASS_WARRIOR:
+    switch (level) {
+      case  0: return 0;
+      case  1: return 1;
+      case  2: return 2000;
+      case  3: return 4000;
+      case  4: return 8000;
+      case  5: return 16000;
+      case  6: return 32000;
+      case  7: return 64000;
+      case  8: return 125000;
+      case  9: return 250000;
+      case 10: return 500000;
+      case 11: return 750000;
+      case 12: return 1000000;
+      case 13: return 1250000;
+      case 14: return 1500000;
+      case 15: return 1850000;
+      case 16: return 2200000;
+      case 17: return 2550000;
+      case 18: return 2900000;
+      case 19: return 3250000;
+      case 20: return 3600000;
+      case 21: return 3900000;
+      case 22: return 4200000;
+      case 23: return 4500000;
+      case 24: return 4800000;
+      case 25: return 5150000;
+      case 26: return 5500000;
+      case 27: return 5950000;
+      case 28: return 6400000;
+      case 29: return 6850000;
+      case 30: return 7400000;
+      /* add new levels here */
+      case LVL_IMMORT: return 8000000;
+    }
+    break;
+	
+	case CLASS_BARBARIAN:
     switch (level) {
       case  0: return 0;
       case  1: return 1;
@@ -2046,6 +2448,36 @@ const char *title_male(int chclass, int level)
       default: return "the Warrior";
     }
     break;
+	
+	case CLASS_BARBARIAN:
+    switch(level) {
+      case  1: return "the Swordpupil";
+      case  2: return "the Recruit";
+      case  3: return "the Sentry";
+      case  4: return "the Fighter";
+      case  5: return "the Soldier";
+      case  6: return "the Warrior";
+      case  7: return "the Veteran";
+      case  8: return "the Swordsman";
+      case  9: return "the Fencer";
+      case 10: return "the Combatant";
+      case 11: return "the Hero";
+      case 12: return "the Myrmidon";
+      case 13: return "the Swashbuckler";
+      case 14: return "the Mercenary";
+      case 15: return "the Swordmaster";
+      case 16: return "the Lieutenant";
+      case 17: return "the Champion";
+      case 18: return "the Dragoon";
+      case 19: return "the Cavalier";
+      case 20: return "the Knight";
+      /* no one ever thought up these titles 21-30 */
+      case LVL_IMMORT: return "the Immortal Warlord";
+      case LVL_GOD: return "the Extirpator";
+      case LVL_GRGOD: return "the God of war";
+      default: return "the Warrior";
+    }
+    break;
   }
 
   /* Default title for classes which do not have titles defined */
@@ -2165,6 +2597,36 @@ const char *title_female(int chclass, int level)
     break;
 
     case CLASS_WARRIOR:
+    switch(level) {
+      case  1: return "the Swordpupil";
+      case  2: return "the Recruit";
+      case  3: return "the Sentress";
+      case  4: return "the Fighter";
+      case  5: return "the Soldier";
+      case  6: return "the Warrior";
+      case  7: return "the Veteran";
+      case  8: return "the Swordswoman";
+      case  9: return "the Fenceress";
+      case 10: return "the Combatess";
+      case 11: return "the Heroine";
+      case 12: return "the Myrmidon";
+      case 13: return "the Swashbuckleress";
+      case 14: return "the Mercenaress";
+      case 15: return "the Swordmistress";
+      case 16: return "the Lieutenant";
+      case 17: return "the Lady Champion";
+      case 18: return "the Lady Dragoon";
+      case 19: return "the Cavalier";
+      case 20: return "the Lady Knight";
+      /* no one ever thought up these titles 21-30 */
+      case LVL_IMMORT: return "the Immortal Lady of War";
+      case LVL_GOD: return "the Queen of Destruction";
+      case LVL_GRGOD: return "the Goddess of war";
+      default: return "the Warrior";
+    }
+    break;
+	
+	case CLASS_BARBARIAN:
     switch(level) {
       case  1: return "the Swordpupil";
       case  2: return "the Recruit";

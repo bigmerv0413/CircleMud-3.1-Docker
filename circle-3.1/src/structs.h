@@ -119,8 +119,9 @@
 #define CLASS_CLERIC      1
 #define CLASS_THIEF       2
 #define CLASS_WARRIOR     3
+#define CLASS_BARBARIAN   4
 
-#define NUM_CLASSES	  4  /* This must be the number of classes!! */
+#define NUM_CLASSES	  5  /* This must be the number of classes!! */
 
 /* NPC classes (currently unused - feel free to implement!) */
 #define CLASS_OTHER       0
@@ -351,6 +352,7 @@
 #define ITEM_ANTI_CLERIC   (1 << 13)	/* Not usable by clerics	*/
 #define ITEM_ANTI_THIEF	   (1 << 14)	/* Not usable by thieves	*/
 #define ITEM_ANTI_WARRIOR  (1 << 15)	/* Not usable by warriors	*/
+#define ITEM_ANTI_BARBARIAN  (1 << 16)	/* Not usable by warriors	*/
 #define ITEM_NOSELL	   (1 << 16)	/* Shopkeepers won't touch it	*/
 
 
