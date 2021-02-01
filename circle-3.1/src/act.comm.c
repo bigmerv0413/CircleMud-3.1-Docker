@@ -390,27 +390,27 @@ ACMD(do_gen_comm)
     {"You cannot holler!!\r\n",
       "holler",
       "",
-    KYEL},
+    KBLU},
 
     {"You cannot shout!!\r\n",
-      "shout",
+      "Shout",
       "Turn off your noshout flag first!\r\n",
-    KYEL},
+    KRED},
 
     {"You cannot gossip!!\r\n",
-      "gossip",
+      "Gossip",
       "You aren't even on the channel!\r\n",
     KMAG},
 
     {"You cannot auction!!\r\n",
-      "auction",
+      "Auction",
       "You aren't even on the channel!\r\n",
     KYEL},
 
     {"You cannot congratulate!\r\n",
-      "congrat",
+      "Congrat",
       "You aren't even on the channel!\r\n",
-    KGRN}
+    KCYN}
   };
 
   /* to keep pets, etc from being ordered to shout */
@@ -457,7 +457,8 @@ ACMD(do_gen_comm)
   if (PRF_FLAGGED(ch, PRF_NOREPEAT))
     send_to_char(ch, "%s", OK);
   else
-    send_to_char(ch, "%sYou %s, '%s'%s\r\n", COLOR_LEV(ch) >= C_CMP ? color_on : "", com_msgs[subcmd][1], argument, CCNRM(ch, C_CMP));
+    send_to_char(ch, "%s[%s] %s: '%s'%s\r\n", COLOR_LEV(ch) >= C_CMP ? color_on : "", com_msgs[subcmd][1], GET_NAME(ch) ,argument, CCNRM(ch, C_CMP));
+
 
   snprintf(buf1, sizeof(buf1), "$n %ss, '%s'", com_msgs[subcmd][1], argument);
 
