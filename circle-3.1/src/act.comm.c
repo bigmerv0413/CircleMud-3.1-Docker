@@ -388,7 +388,7 @@ ACMD(do_gen_comm)
    */
   const char *com_msgs[][4] = {
     {"You cannot holler!!\r\n",
-      "holler",
+      "Holler",
       "",
     KBLU},
 
