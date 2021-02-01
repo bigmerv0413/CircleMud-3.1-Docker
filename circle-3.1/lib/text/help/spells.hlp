@@ -554,4 +554,16 @@ Level       : Cleric level 12.
 The caster will be transferred back to his hometown sanctuary (usually the
 Temple of Midgaard).
 #
+BALEFIRE
+
+Usage       : cast 'balefire' <victim>
+Accumulative: -
+Duration    : Instantaneous
+Level       : Only cool guys.
+Save        : Versus spell for half damage.
+
+This spell is actually the most powerful spell a magic user can cast.
+
+See also: "FIREBALL"
+#
 $

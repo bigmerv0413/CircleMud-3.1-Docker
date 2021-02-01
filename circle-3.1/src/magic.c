@@ -254,6 +254,13 @@ int mag_damage(int level, struct char_data *ch, struct char_data *victim,
   case SPELL_EARTHQUAKE:
     dam = dice(2, 8) + level;
     break;
+	
+  case SPELL_BALEFIRE:
+    if (IS_MAGIC_USER(ch))
+      dam = dice(15, 8) + 11;
+    else
+      dam = dice(15, 6) + 11;
+    break;
 
   } /* switch(spellnum) */
 

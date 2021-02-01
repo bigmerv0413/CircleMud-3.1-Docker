@@ -872,6 +872,10 @@ void mag_assign_spells(void)
 	TAR_CHAR_ROOM | TAR_FIGHT_VICT, TRUE, MAG_DAMAGE,
 	NULL);
 
+  spello(SPELL_BALEFIRE, "balefire", 40, 40, 2, POS_FIGHTING,
+	TAR_CHAR_ROOM | TAR_FIGHT_VICT, TRUE, MAG_DAMAGE,
+	NULL);
+		
   spello(SPELL_GROUP_HEAL, "group heal", 80, 60, 5, POS_STANDING,
 	TAR_IGNORE, FALSE, MAG_GROUPS,
 	NULL);
