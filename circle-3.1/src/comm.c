@@ -59,6 +59,7 @@
 #include "handler.h"
 #include "db.h"
 #include "house.h"
+#include "screen.h"
 
 #ifdef HAVE_ARPA_TELNET_H
 #include <arpa/telnet.h>
@@ -1008,7 +1009,7 @@ char *make_prompt(struct descriptor_data *d)
     }
 
     if (PRF_FLAGGED(d->character, PRF_DISPHP) && len < sizeof(prompt)) {
-      count = snprintf(prompt + len, sizeof(prompt) - len, "%dH ", GET_HIT(d->character));
+      count = snprintf(prompt + len, sizeof(prompt) - len, "<%s%dH%s ", CCRED(d->character,C_CMP),GET_HIT(d->character),CCNRM(d->character,C_CMP));
       if (count >= 0)
         len += count;
     }
@@ -1020,7 +1021,7 @@ char *make_prompt(struct descriptor_data *d)
     }
 
     if (PRF_FLAGGED(d->character, PRF_DISPMOVE) && len < sizeof(prompt)) {
-      count = snprintf(prompt + len, sizeof(prompt) - len, "%dV ", GET_MOVE(d->character));
+      count = snprintf(prompt + len, sizeof(prompt) - len, "%s%dV%s", CCBYEL(d->character,C_CMP),GET_MOVE(d->character),CCNRM(d->character,C_CMP));
       if (count >= 0)
         len += count;
     }
