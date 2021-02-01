@@ -31,6 +31,7 @@
 #define CCRED(ch,lvl)  (clr((ch),(lvl))?KRED:KNUL)
 #define CCGRN(ch,lvl)  (clr((ch),(lvl))?KGRN:KNUL)
 #define CCYEL(ch,lvl)  (clr((ch),(lvl))?KYEL:KNUL)
+#define CCBYEL(ch,lvl)  (clr((ch),(lvl))?KBYEL:KNUL)
 #define CCBLU(ch,lvl)  (clr((ch),(lvl))?KBLU:KNUL)
 #define CCMAG(ch,lvl)  (clr((ch),(lvl))?KMAG:KNUL)
 #define CCCYN(ch,lvl)  (clr((ch),(lvl))?KCYN:KNUL)

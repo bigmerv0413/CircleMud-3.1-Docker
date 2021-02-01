@@ -269,8 +269,8 @@ int nameserver_is_slow = NO;
 
 const char *MENU =
 "\r\n"
-"Welcome to the Hyperingenuity MUD!\r\n"
-"0) Exit from Hyperingenuity MUD.\r\n"
+"Welcome to Merv's MUD!\r\n"
+"0) Exit from Merv's MUD.\r\n"
 "1) Enter the game and start playing.\r\n"
 "2) Enter a character description.\r\n"
 "3) Read the background story.\r\n"
@@ -283,11 +283,11 @@ const char *MENU =
 
 const char *WELC_MESSG =
 "\r\n"
-"Welcome to the Hyperingenuity MUD!  May your visit here be... Interesting."
+"Welcome to Merv's MUD!  May your visit here be... Interesting."
 "\r\n\r\n";
 
 const char *START_MESSG =
-"This is your new Hyperingenuity MUD character!\r\n"
+"This is your new Merv's MUD character!\r\n"
 "You can now earn gold, gain experience, find weapons and equipment,\r\n"
 "and much more...\r\n\r\n"
 "To get started, look at your inventory with \"inv\", put on your newbie\r\n"
