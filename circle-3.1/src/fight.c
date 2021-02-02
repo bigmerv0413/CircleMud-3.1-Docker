@@ -582,9 +582,16 @@ void dam_message(int dam, struct char_data *ch, struct char_data *victim,
   act(buf, FALSE, ch, NULL, victim, TO_NOTVICT);
 
   /* damage message to damager */
-  send_to_char(ch, CCYEL(ch, C_CMP));
+  send_to_char(ch, CCBYEL(ch, C_CMP));
   buf = replace_string(dam_weapons[msgnum].to_char,
 	  attack_hit_text[w_type].singular, attack_hit_text[w_type].plural);
+	  
+  char damageString[32];	  
+  sprintf(damageString,"%d",dam);
+  sprintf(buf + strlen(buf)," [");
+  strncat(buf, damageString, 32);
+  sprintf(buf + strlen(buf),"]");
+    
   act(buf, FALSE, ch, NULL, victim, TO_CHAR);
   send_to_char(ch, CCNRM(ch, C_CMP));
 
@@ -995,3 +1002,4 @@ void perform_violence(void)
     }
   }
 }
+
